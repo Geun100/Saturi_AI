@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# Next.js
+/.next/
+/out/
+
+# env files (API 키 등 민감 정보)
+.env
+.env.local
+.env.*.local
+
+# build
+tsconfig.tsbuildinfo
+
+# OS
+.DS_Store

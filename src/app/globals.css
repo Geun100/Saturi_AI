@@ -1,0 +1,101 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 디자인 토큰 ──────────────────────────────────────────────── */
+:root {
+  --bg:      #0B1929;   /* 야간 포항항 */
+  --bg-2:    #0F2035;
+  --bg-3:    #162840;
+  --cyan:    #00D4FF;   /* 영일대 바다 */
+  --coral:   #FF6B35;   /* 구룡포 낙조 */
+  --steel:   #8EA8C3;   /* POSCO 철강 */
+  --glass:   rgba(255,255,255,0.05);
+  --glass-2: rgba(255,255,255,0.09);
+  --border:  rgba(255,255,255,0.09);
+  --border-cyan: rgba(0,212,255,0.18);
+}
+
+body {
+  background: var(--bg);
+  color: #F0F4FF;
+  font-family: 'Pretendard Variable', 'Pretendard', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* ── 유틸리티 ─────────────────────────────────────────────────── */
+@layer utilities {
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+
+  .glass-strong {
+    background: var(--glass-2);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border);
+  }
+
+  .neon-cyan {
+    box-shadow: 0 0 14px rgba(0,212,255,0.22), 0 0 30px rgba(0,212,255,0.08);
+  }
+
+  .neon-coral {
+    box-shadow: 0 0 14px rgba(255,107,53,0.28), 0 0 30px rgba(255,107,53,0.08);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 18px rgba(0,212,255,0.5);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+  .h-dvh { height: 100dvh; }
+}
+
+/* ── 애니메이션 ───────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-up-fast {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes scan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.animate-fade-in   { animation: fade-in 0.3s ease both; }
+.animate-slide-up  { animation: slide-up 0.4s ease both; }
+.animate-slide-up-fast { animation: slide-up-fast 0.3s cubic-bezier(0.32,0.72,0,1) both; }
+.animate-pulse-cyan { animation: pulse-cyan 2s ease-in-out infinite; }
+
+/* ── 스크롤바 ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.2); border-radius: 2px; }
